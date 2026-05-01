@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b52b60631fe4dd4db4727c4e238022b
+guid: 17cb2598dc1e96a40ba3dc7a05c52e15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8655606086079791666
-    second: GameScene_0
+      213: -7793825482778209829
+    second: Coock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameScene_0
+      name: Coock_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 906
-        height: 542
+        x: 34
+        y: 32
+        width: 374
+        height: 205
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ecd3183cf1c11e780800000000000000
-      internalID: -8655606086079791666
+      spriteID: bd11e915405c6d390800000000000000
+      internalID: -7793825482778209829
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GameScene_0: -8655606086079791666
+      Coock_0: -7793825482778209829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
