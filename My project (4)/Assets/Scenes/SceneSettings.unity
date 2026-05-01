@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 771392865}
   - component: {fileID: 771392864}
   - component: {fileID: 771392863}
+  - component: {fileID: 771392866}
   m_Layer: 5
   m_Name: Sound
   m_TagString: Untagged
@@ -522,7 +523,19 @@ MonoBehaviour:
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1131025128}
+        m_TargetAssemblyTypeName: UnityEngine.AudioListener, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &771392864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +574,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771392861}
   m_CullTransparentMesh: 1
+--- !u!114 &771392866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771392861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666b26e71855448428d39d1788a3bc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeControl
+  mixer: {fileID: 24100000, guid: d39ea6e9503a71f478954aba0fa0704e, type: 2}
+  parameterName: MyExposedVolume
 --- !u!1 &783609565
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,7 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c1658748ad47418e6dc10853197fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::startSceneSettings
-  musicTheme: {fileID: 8300000, guid: f0bd70e6d6516574d8f675c7060be4f9, type: 3}
+  musicTheme: {fileID: 8300000, guid: e1a7f0660d76413499d884c6098f8089, type: 3}
 --- !u!114 &1131025132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,7 +1073,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2086453197}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1131025131}
+        m_TargetAssemblyTypeName: StartSceneSettings, Assembly-CSharp
+        m_MethodName: GoExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2086453197
 MonoBehaviour:
   m_ObjectHideFlags: 0

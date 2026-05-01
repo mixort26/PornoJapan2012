@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1195723142}
   - component: {fileID: 1195723141}
   m_Layer: 0
-  m_Name: GameScene_0
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8655606086079791666, guid: 9b52b60631fe4dd4db4727c4e238022b, type: 3}
+  m_Sprite: {fileID: 2571985743837607906, guid: 7dd8d65fab2ee914fb1467269db3dc79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,8 +204,8 @@ Transform:
   m_GameObject: {fileID: 1195723140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0027, y: 0.0498, z: 0}
-  m_LocalScale: {x: 2.1125636, y: 1.8618, z: 1}
+  m_LocalPosition: {x: -0.0034, y: 0.0088, z: 0}
+  m_LocalScale: {x: 0.92755455, y: 0.9293291, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4246cfbc9008348b8e79a9144e9367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::startSceneFlappyBird
-  musicTheme: {fileID: 8300000, guid: f0bd70e6d6516574d8f675c7060be4f9, type: 3}
+  musicTheme: {fileID: 8300000, guid: e1a7f0660d76413499d884c6098f8089, type: 3}
 --- !u!114 &1856633788
 MonoBehaviour:
   m_ObjectHideFlags: 0

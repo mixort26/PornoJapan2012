@@ -26,6 +26,7 @@ public class MusicManager : MonoBehaviour
         if (_audioSource.clip == clip) return;
 
         _audioSource.clip = clip;
+        _audioSource.volume = 0.1f;
         _audioSource.Play();
     }
 }

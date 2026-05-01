@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class startSceneFlappyBird : MonoBehaviour
+public class StartSceneFlappyBird : MonoBehaviour
 {
     public AudioClip musicTheme;
 
