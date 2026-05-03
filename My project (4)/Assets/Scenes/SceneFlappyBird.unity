@@ -454,10 +454,10 @@ MonoBehaviour:
   - 2
   - 3
   - 1
-  - 6
-  - 9
-  - 11
   - 12
+  - 19
+  - 22
+  - 28
   minYOffset: -5
   maxYOffset: 5
 --- !u!4 &246737426
