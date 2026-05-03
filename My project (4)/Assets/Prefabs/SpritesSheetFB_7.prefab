@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7840538353587548243}
   - component: {fileID: 8021364784238637547}
   - component: {fileID: 5646136120833155178}
+  - component: {fileID: 6013982865137305465}
   m_Layer: 0
   m_Name: SpritesSheetFB_7
   m_TagString: Untagged
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -337024919517256331, guid: da34aa135ce78404aa8fde85885a7d38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,3 +106,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeMovemnt
   speed: 3
+--- !u!114 &6013982865137305465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667364940757257143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7567b3a00a081c4687c4b8925c0cf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destroyer
+  leftBoundary: -15

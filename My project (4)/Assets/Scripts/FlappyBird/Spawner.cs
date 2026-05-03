@@ -43,6 +43,8 @@ public class Spawner : MonoBehaviour
             
             GameObject pipeObj = Instantiate(pipes[pipeIndex]);
             pipeObj.transform.position = transform.position + new Vector3(0, Random.Range(minYOffset, maxYOffset));
+
+
         }
     }
 }

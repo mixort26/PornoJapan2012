@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f2ad6f053855a4d90d421129257632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::startSceneMenu
-  musicTheme: {fileID: 8300000, guid: e1a7f0660d76413499d884c6098f8089, type: 3}
+  musicTheme: {fileID: 8300000, guid: c4449a783058c6d4e8bf5d22631301df, type: 3}
 --- !u!1 &1163890171
 GameObject:
   m_ObjectHideFlags: 0

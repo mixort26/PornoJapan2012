@@ -14,7 +14,8 @@ public class StartSceneMenu : MonoBehaviour
     }
 
     public void GoWork() {
-        SceneManager.LoadScene("SceneWorkPlace");
+        GameData.Minutes = 480;
+        SceneManager.LoadScene("Mail");
     }
 
     public void GoQuit() {

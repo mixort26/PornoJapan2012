@@ -20,7 +20,7 @@ public class TimeManager : MonoBehaviour
     
     private IEnumerator Aaa() {
         while (true) {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
             GameData.Minutes++;
         }
     }

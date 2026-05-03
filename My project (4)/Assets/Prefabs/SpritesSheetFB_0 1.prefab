@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6844114497474227176}
   - component: {fileID: 331610798140181159}
   - component: {fileID: 1532940173624439708}
+  - component: {fileID: 6841377758431851264}
   - component: {fileID: 1941917855268398219}
   m_Layer: 0
   m_Name: SpritesSheetFB_0 1
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8477034014909265294, guid: da34aa135ce78404aa8fde85885a7d38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,6 +107,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeMovemnt
   speed: 3
+--- !u!114 &6841377758431851264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3467930501446845547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7567b3a00a081c4687c4b8925c0cf9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destroyer
+  leftBoundary: -15
 --- !u!58 &1941917855268398219
 CircleCollider2D:
   m_ObjectHideFlags: 0

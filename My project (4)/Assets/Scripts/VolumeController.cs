@@ -11,7 +11,6 @@ public class VolumeControl : MonoBehaviour
 
     void Start()
     {
-        slider = GetComponent<Slider>();
         slider.minValue = -80f;
         slider.maxValue = 0f;
 
