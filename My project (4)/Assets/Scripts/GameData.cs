@@ -23,16 +23,19 @@ public static class GameData
         if (Level >= CostLevelUp.Length) return;
         switch (Level) {
             case 0 when Money >= CostLevelUp[Level]:
+                Money -= CostLevelUp[Level];
                 Level++;
                 SizeOfMenu = 3;
                 SizeOfMenuIngredients = 2;
                 break;
             case 1 when Money >= CostLevelUp[Level]:
+                Money -= CostLevelUp[Level];
                 Level++;
                 SizeOfMenu = 4;
                 SizeOfMenuIngredients = 3;
                 break;
             case 2 when Money >= CostLevelUp[Level]:
+                Money -= CostLevelUp[Level];
                 Level++;
                 SizeOfMenu = 5;
                 SizeOfMenuIngredients = 4;

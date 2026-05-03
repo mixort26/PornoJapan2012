@@ -9,8 +9,7 @@ public class StartSceneWorkPlace : MonoBehaviour
 {
     //Y = -6.5 -- Y = 0.15 (from to)
 
-    [Header("Main")]
-    public AudioClip musicTheme;
+    [Header("Main")] public AudioClip musicTheme;
     public GameObject sceneContent;
     public Canvas worldCanvas;
     public Sprite[] buttons = new Sprite[4];
@@ -18,8 +17,7 @@ public class StartSceneWorkPlace : MonoBehaviour
     public Sprite[] ingSprites = new Sprite[4];
     public Image blackscreen;
     public GameObject Blackscreen;
-    [Header("Caterpillars")]
-    public GameObject caterpillar1;
+    [Header("Caterpillars")] public GameObject caterpillar1;
     public GameObject caterpillar2;
     public GameObject canvas1;
     public GameObject canvas2;
@@ -30,13 +28,11 @@ public class StartSceneWorkPlace : MonoBehaviour
     public GameObject error;
     public GameObject[] notice = new GameObject[2];
     public GameObject[] check;
-    [Header("LevelUpList")]
-    public GameObject errorLvlUp;
+    [Header("LevelUpList")] public GameObject errorLvlUp;
     public GameObject buttonLevelUp;
     public GameObject levelUpList;
     public GameObject levelUpCost;
-    [Header("ScoreList")]
-    public GameObject ScoreList;
+    [Header("ScoreList")] public GameObject ScoreList;
     public TextMeshProUGUI[] ScoreText = new TextMeshProUGUI[4];
     public Image[] ScoreImage = new Image[4];
     //private ТУТ Я ТОЛКОМ ТО ТОЖЕ ХЗ(((
@@ -57,7 +53,9 @@ public class StartSceneWorkPlace : MonoBehaviour
     public static bool OrderBeRemove = false;
 
     private void Start() {
-        if (check != null) foreach (GameObject t in check) t.SetActive(false);
+        if (check != null)
+            foreach (GameObject t in check)
+                t.SetActive(false);
         count.GetComponent<TextMeshProUGUI>().text = "" + GameData.Money;
         MusicManager.Instance.PlayMusic(musicTheme);
         //Прячем всех
@@ -75,7 +73,7 @@ public class StartSceneWorkPlace : MonoBehaviour
         caterpillar1.SetActive(false);
         caterpillar2.SetActive(false);
         foreach (var t in cups)
-         t.SetActive(false);
+            t.SetActive(false);
         buttonLevelUp.GetComponent<Image>().sprite = buttons[2];
         _miss = 0;
         GameData.Coffees = new int[5];
@@ -89,45 +87,47 @@ public class StartSceneWorkPlace : MonoBehaviour
             StartCoroutine(MoveToRoutine(ScoreList, 0, 0, 1));
         }
     }
-    
+
     private void Update() {
-         if (Input.GetKeyUp(KeyCode.Space)) Cheat();
-        
-         if (_scoreListActive) GameData.Minutes = 475;
-        
-         if (_prevMinutes != GameData.Minutes) {
-             if (_prevMinutes == 1199) _endDay = true;
-             time.GetComponent<TextMeshProUGUI>().text =
-                 (GameData.Minutes >= 600 ? "" + GameData.Minutes / 60 : "0" + GameData.Minutes / 60) + ':' +
-                 (GameData.Minutes % 60 >= 10 ? GameData.Minutes % 60 : "0" + GameData.Minutes % 60);
-             _prevMinutes = GameData.Minutes;
-         }
-    
+        if (_endDay || _miss >= 3) {
+            if (_miss >= 3) GameData.Money -= 20;
+            _endDay = false;
+            SceneManager.LoadScene("ToNight");
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space)) Cheat();
+
+        if (_scoreListActive) GameData.Minutes = 475;
+
+        if (_prevMinutes != GameData.Minutes) {
+            if (_prevMinutes == 1199) _endDay = true;
+            time.GetComponent<TextMeshProUGUI>().text =
+                (GameData.Minutes >= 600 ? "" + GameData.Minutes / 60 : "0" + GameData.Minutes / 60) + ':' +
+                (GameData.Minutes % 60 >= 10 ? GameData.Minutes % 60 : "0" + GameData.Minutes % 60);
+            _prevMinutes = GameData.Minutes;
+        }
+
         // Проверка на наличие посетителей, если кого-то нет то начинаем движ
-         if ((!caterpillar1.activeSelf || caterpillar1.transform.position.y <= -7) && GameData.Minutes >= 480) {
-             CaterpillarUp(caterpillar1, canvas1, -1f, 1);
-         }
-        
-         if ((!caterpillar2.activeSelf || caterpillar2.transform.position.y <= -7) && GameData.Minutes >= 480) {
-             CaterpillarUp(caterpillar2, canvas2, -1f, 2);
-         }
-        
-         if (_endDay || _miss >= 3) {
-             if (_miss >= 3) GameData.Money -= 20;
-             _endDay = false;
-             SceneManager.LoadScene("ToNight");
-         }
-        
-         if (GameData.Coffees[4] < Final) {
-             if (worldCanvas.GetComponent<GraphicRaycaster>().enabled) {
-                 Blackscreen.SetActive(true);
-                 StartCoroutine(FadeRoutine(blackscreen, 5f));
-             }
-             worldCanvas.GetComponent<GraphicRaycaster>().enabled = false;
-             if (!_isProcess) {
-                 SceneManager.LoadScene("Final");
-             }
-         }
+
+        if ((!caterpillar1.activeSelf || caterpillar1.transform.position.y <= -7) && GameData.Minutes >= 480) {
+            CaterpillarUp(caterpillar1, canvas1, -1f, 1);
+        }
+
+        if ((!caterpillar2.activeSelf || caterpillar2.transform.position.y <= -7) && GameData.Minutes >= 480) {
+            CaterpillarUp(caterpillar2, canvas2, -1f, 2);
+        }
+
+        if (GameData.Coffees[4] < Final) {
+            if (worldCanvas.GetComponent<GraphicRaycaster>().enabled) {
+                Blackscreen.SetActive(true);
+                StartCoroutine(FadeRoutine(blackscreen, 5f));
+            }
+
+            worldCanvas.GetComponent<GraphicRaycaster>().enabled = false;
+            if (!_isProcess) {
+                SceneManager.LoadScene("Final");
+            }
+        }
     }
 
     private void CaterpillarUp(GameObject caterpillar, GameObject canvas, float toY, int number) {
@@ -147,7 +147,7 @@ public class StartSceneWorkPlace : MonoBehaviour
     private IEnumerator MoveToRoutine(GameObject obj, float toY, float toX, float duration) {
         RectTransform rect = obj.GetComponent<RectTransform>();
         float elapsed = 0;
-    
+
         Vector2 startPos = (rect != null) ? rect.anchoredPosition : (Vector2)obj.transform.position;
         Vector2 endPos = new Vector2(toX, toY);
 
@@ -192,13 +192,12 @@ public class StartSceneWorkPlace : MonoBehaviour
         color.a = 0;
         sprite.color = color;
 
-        while (elapsed < duration)
-        {
+        while (elapsed < duration) {
             elapsed += Time.unscaledDeltaTime;
-            
+
             color.a = Mathf.Clamp01(elapsed / duration);
             sprite.color = color;
-            
+
             yield return null;
         }
 
@@ -206,7 +205,7 @@ public class StartSceneWorkPlace : MonoBehaviour
         sprite.color = color;
         _isProcess = false;
     }
-    
+
     public void gave1() {
         if (_order1Active) {
             if (GameData.Coffees[_order1[0]] >= _order1[1]) {
@@ -225,7 +224,7 @@ public class StartSceneWorkPlace : MonoBehaviour
                 var ingredient = Random.Range(1, 3);
                 var typeIng = Random.Range(0, GameData.SizeOfMenuIngredients);
                 GameData.Ingredients[typeIng] += ingredient;
-                AddTaskToQueue(new int[] {ingredient, typeIng, GameData.CostCoffees[_order1[0]] * _order1[1]});
+                AddTaskToQueue(new int[] { ingredient, typeIng, GameData.CostCoffees[_order1[0]] * _order1[1] });
             }
 
             Debug.Log($"Нужно {_order1[1]}, у вас есть {GameData.Coffees[_order1[0]]}");
@@ -235,7 +234,7 @@ public class StartSceneWorkPlace : MonoBehaviour
             canvas1.transform.Find("Button").GetComponent<Image>().sprite = buttons[1];
             StartSceneCooking.CurrentOrder = new[] { _order1[0], _order1[1] };
             _timeAccept = GameData.Minutes;
-            StartCoroutine(Miss(caterpillar1, canvas1, _timeAccept));
+            StartCoroutine(Miss(1));
         }
         else StartCoroutine(Error(error));
     }
@@ -258,7 +257,7 @@ public class StartSceneWorkPlace : MonoBehaviour
                 var ingredient = Random.Range(1, 3);
                 var typeIng = Random.Range(0, GameData.SizeOfMenuIngredients);
                 GameData.Ingredients[typeIng] += ingredient;
-                AddTaskToQueue(new int[] {ingredient, typeIng, GameData.CostCoffees[_order2[0]] * _order2[1]});
+                AddTaskToQueue(new int[] { ingredient, typeIng, GameData.CostCoffees[_order2[0]] * _order2[1] });
             }
 
             Debug.Log($"Нужно {_order2[1]}, у вас есть {GameData.Coffees[_order2[0]]}");
@@ -267,60 +266,74 @@ public class StartSceneWorkPlace : MonoBehaviour
             _order2Active = true;
             canvas2.transform.Find("Button").GetComponent<Image>().sprite = buttons[1];
             StartSceneCooking.CurrentOrder = new[] { _order2[0], _order2[1] };
-            _timeAccept = GameData.Minutes;
-            StartCoroutine(Miss(caterpillar2, canvas2, _timeAccept));
+            StartCoroutine(Miss(2));
         }
         else StartCoroutine(Error(error));
     }
 
-    public void AddTaskToQueue(int[] taskData)
-    {
+    public void AddTaskToQueue(int[] taskData) {
         _tasks.Enqueue(taskData);
-        
-        if (!_isProcessing)
-        {
+
+        if (!_isProcessing) {
             StartCoroutine(ProcessQueue());
         }
     }
-    
-    IEnumerator Miss(GameObject caterpillar, GameObject canvas, int timeA) {
+
+    IEnumerator Miss(int OrderId) {
+        int timeA = GameData.Minutes;
         Debug.Log("Заказ принят");
-        while (GameData.Minutes - timeA <= 55 && (_order1Active || _order2Active)) {
-            if (GameData.Minutes - timeA >= 45) {
+        while (GameData.Minutes - timeA <= 75 && (_order1Active || _order2Active)) {
+            if (GameData.Minutes - timeA >= 65) {
                 Debug.Log("Время вышло");
-                CaterpillarDown(caterpillar, canvas);
+                if (OrderId == 1) {
+                    CaterpillarDown(caterpillar1, canvas1);
+                    _order1Active = false;
+                }
+                else {
+                    CaterpillarDown(caterpillar2, canvas2);
+                    _order2Active = false;
+                }
+
                 _miss++;
+                Debug.Log($"miss засчитан: {_miss}");
                 StartSceneCooking.CurrentOrder = null;
-                _order1Active = false;
-                _order2Active = false;
             }
+
             // Debug.Log($"Времени прошло: {GameData.Minutes - timeA}");
             yield return new WaitForSeconds(1f);
         }
     }
 
-    private void RemoveOrder(GameObject caterpillar, GameObject canvas) {
-        CaterpillarDown(caterpillar, canvas);
+    private void RemoveOrder(int OrderId) {
+        if (OrderId == 1) {
+            _order1Active = false;
+            CaterpillarDown(caterpillar1, canvas1);
+        }
+        else {
+            _order2Active = false;
+            CaterpillarDown(caterpillar2, canvas2);
+        }
+
         _miss++;
+        Debug.Log($"miss засчитан: {_miss}");
         StartSceneCooking.CurrentOrder = null;
-        _order1Active = false;
-        _order2Active = false;
+        OrderBeRemove = false;
     }
-    
-    private IEnumerator ProcessQueue()
-    {
+
+    private IEnumerator ProcessQueue() {
         _isProcessing = true;
 
-        while (_tasks.Count > 0)
-        {
+        while (_tasks.Count > 0) {
             int[] taskData = _tasks.Dequeue();
-            yield return StartCoroutine(Notice(taskData[0],  taskData[1], taskData[2]));
+            yield return StartCoroutine(Notice(taskData[0], taskData[1], taskData[2]));
         }
 
         _isProcessing = false;
     }
+
     private IEnumerator Notice(int count, int typeIng, int money) {
-        Debug.Log($"Уведомление запущено: {GameData.CostCoffees[_order1[0]]} X {_order1[1]} денег и {count} ингредиентов.");
+        Debug.Log(
+            $"Уведомление запущено: {GameData.CostCoffees[_order1[0]]} X {_order1[1]} денег и {count} ингредиентов.");
         notice[0].transform.Find("Coins").GetComponent<TextMeshProUGUI>().text = money.ToString();
         notice[1].transform.Find("IngCount").GetComponent<TextMeshProUGUI>().text = count.ToString();
         notice[1].transform.Find("IngType").GetComponent<Image>().sprite = ingSprites[typeIng];
@@ -332,38 +345,40 @@ public class StartSceneWorkPlace : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(MoveToRoutine(notice[1], 60, -1100, 2f));
     }
-    
-    private IEnumerator ShowScoreList() {
 
+    private IEnumerator ShowScoreList() {
         for (int i = 0; i < 4; i++) {
             ScoreImage[i].color = new Color(ScoreImage[i].color.r, ScoreImage[i].color.g, ScoreImage[i].color.b, 0f);
             ScoreText[i].text = null;
         }
+
         while (GameData.Score > 0) {
             for (int i = 0; i < GameData.SizeOfMenuIngredients; i++) {
-                var rand = Random.Range(0, GameData.Score+1);
+                var rand = Random.Range(0, GameData.Score + 1);
                 Debug.Log($"Рандом сказал {rand}");
                 GameData.Ingredients[i] += rand;
                 Debug.Log($"Теперь {GameData.Ingredients[i]}, а было {prevIng[i]}");
                 GameData.Score -= rand;
             }
         }
-        
+
         for (int i = 0; i < GameData.SizeOfMenuIngredients; i++) {
             Debug.Log($"Должно быть {GameData.Ingredients[i] - prevIng[i]}");
             prevIng[i] = GameData.Ingredients[i] - prevIng[i];
             Debug.Log($"Получается {prevIng[i]}");
         }
-        
+
         int j = 0;
         for (int i = 0; i < GameData.SizeOfMenuIngredients; i++) {
             if (prevIng[i] > 0) {
-                ScoreImage[i].color = new Color(ScoreImage[i].color.r, ScoreImage[i].color.g, ScoreImage[i].color.b, 1f);
+                ScoreImage[i].color =
+                    new Color(ScoreImage[i].color.r, ScoreImage[i].color.g, ScoreImage[i].color.b, 1f);
                 ScoreImage[j].sprite = ingSprites[i];
                 ScoreText[j].text = prevIng[i].ToString();
                 j++;
             }
         }
+
         yield return null;
     }
 
@@ -378,22 +393,26 @@ public class StartSceneWorkPlace : MonoBehaviour
         yield return new WaitForSeconds(3f);
         StartCoroutine(MoveToRoutine(obj, 600, 0, 1f));
     }
-    
+
     public void GoCook() {
         SceneManager.LoadScene("SceneCooking", LoadSceneMode.Additive);
         sceneContent.SetActive(false);
     }
-    
+
     private void OnEnable() {
         StartSceneCooking.OnBookClosed += MyMethodToRun;
     }
+
     private void OnDisable() {
         StartSceneCooking.OnBookClosed -= MyMethodToRun;
     }
+
     private void MyMethodToRun() {
         sceneContent.SetActive(true);
         TakeCup();
-        if (!OrderBeRemove) return; if (_order1Active) RemoveOrder(caterpillar1, canvas1); else RemoveOrder(caterpillar2, canvas2);
+        if (!OrderBeRemove) return;
+        if (_order1Active) RemoveOrder(1);
+        else RemoveOrder(2);
     }
 
     public void ShowLevelUpList() {
@@ -410,9 +429,9 @@ public class StartSceneWorkPlace : MonoBehaviour
     }
 
     public void BuyLevelUp() {
-        
         if (GameData.Level < GameData.CostLevelUp.Length && GameData.Money >= GameData.CostLevelUp[GameData.Level]) {
             GameData.LevelUp();
+            count.GetComponent<TextMeshProUGUI>().text = "" + GameData.Money;
             ShowLevelUpList();
             if (GameData.Level < GameData.CostLevelUp.Length)
                 buttonLevelUp.GetComponent<Image>().sprite = GameData.Money >= GameData.CostLevelUp[GameData.Level]
@@ -430,15 +449,20 @@ public class StartSceneWorkPlace : MonoBehaviour
 
     public void TakeCup() {
         int index = 0;
+        int summ = 0;
         foreach (var i in cups)
             i.SetActive(false);
-        for (int i = 0; i < (GameData.Coffees.Length > 3 ? 3 : GameData.Coffees.Length); i++) {
-            int j = GameData.Coffees[i];
-            while (j > 0) {
-                cups[index].GetComponent<Image>().sprite = coffeeSprites[i];
-                cups[index].SetActive(true);
-                j--;
-                index++;
+        foreach (var i in GameData.Coffees)
+            summ += i;
+        while (index < (summ > cups.Length ? cups.Length : summ)) {
+            for (int i = 0; i < GameData.Coffees.Length; i++) {
+                int j = GameData.Coffees[i];
+                while (j > 0) {
+                    cups[index].GetComponent<Image>().sprite = coffeeSprites[i];
+                    cups[index].SetActive(true);
+                    j--;
+                    index++;
+                }
             }
         }
     }

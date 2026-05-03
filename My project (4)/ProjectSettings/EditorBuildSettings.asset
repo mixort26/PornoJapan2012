@@ -6,32 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SceneCooking.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/Scenes/SceneMenu.unity
     guid: 8eaf4880cdc363044ab44b53533ce063
   - enabled: 1
-    path: Assets/Scenes/SceneFlappyBird.unity
-    guid: fe00d5e2ffec7de4689c5a2b8512dcaf
-  - enabled: 1
-    path: Assets/Scenes/SceneWorkPlace.unity
-    guid: 69ff58c1ea6fec34a98a4d342b45ff5d
-  - enabled: 1
     path: Assets/Scenes/SceneSettings.unity
     guid: a054d3b54c8f11f4a82b5d7da933588a
-  - enabled: 1
-    path: Assets/Scenes/SceneScore.unity
-    guid: 1db1cb135885d6d4f94c9f8fd601c480
-  - enabled: 1
-    path: Assets/Scenes/ToNight.unity
-    guid: a89297b28e2cbda49a2f74f6d915ce0a
   - enabled: 1
     path: Assets/Scenes/Mail.unity
     guid: e2df6223b4487d74cbec87e910bca293
   - enabled: 1
     path: Assets/Scenes/ToDay.unity
     guid: dc0102c6a0b92c54eacb31ed27bc51d4
+  - enabled: 1
+    path: Assets/Scenes/SceneWorkPlace.unity
+    guid: 69ff58c1ea6fec34a98a4d342b45ff5d
+  - enabled: 1
+    path: Assets/Scenes/SceneCooking.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/ToNight.unity
+    guid: a89297b28e2cbda49a2f74f6d915ce0a
+  - enabled: 1
+    path: Assets/Scenes/SceneFlappyBird.unity
+    guid: fe00d5e2ffec7de4689c5a2b8512dcaf
+  - enabled: 1
+    path: Assets/Scenes/SceneScore.unity
+    guid: 1db1cb135885d6d4f94c9f8fd601c480
   - enabled: 1
     path: Assets/Scenes/Final.unity
     guid: d9a31cc5f672a7a4f8be74c424594690

@@ -14,11 +14,12 @@ public class StartSceneCooking : MonoBehaviour
     public TextMeshProUGUI[] counts = new TextMeshProUGUI[4];
     public GameObject buttonToRemove;
     public static event Action OnBookClosed;
-    
+    private AudioSource audioSource;
     public static int[] CurrentOrder;
     private int _prevBeans = GameData.Ingredients[0]-1;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < 3; i++) {
             Locks[i] = GameObject.Find("Lock" + i);
             Locks[i].SetActive(true);
@@ -118,7 +119,10 @@ public class StartSceneCooking : MonoBehaviour
                 break;
         }
         
-        if (GameData.Coffees[CurrentOrder[0]] >= CurrentOrder[1]) HideOrder();
+        if (GameData.Coffees[CurrentOrder[0]] >= CurrentOrder[1]) {
+            audioSource.PlayOneShot(audioSource.clip);
+            HideOrder();
+        }
     }
 
     public void GoWork() {

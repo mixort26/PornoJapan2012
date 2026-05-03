@@ -9,16 +9,19 @@ namespace Sprites.ToNight
     {
         public AudioClip musicTheme;
         public Image[] images;
-        private float _duration = 3f;
+        private float _duration = 4f;
 
         private void Start() {
-            if (Input.anyKeyDown) {
-                SceneManager.LoadScene("SceneFlappyBird");
-                SceneManager.UnloadSceneAsync("ToNight");
-            }
             MusicManager.Instance.PlayMusic(musicTheme);
             StartCoroutine(StartCor());
             StartCoroutine(End());
+        }
+
+        private void Update() {
+            if (Input.GetKeyUp(KeyCode.Escape)) {
+                SceneManager.LoadScene("SceneFlappyBird");
+                SceneManager.UnloadSceneAsync("ToNight");
+            }
         }
 
         private IEnumerator End() {
@@ -28,9 +31,10 @@ namespace Sprites.ToNight
         }
 
         private IEnumerator StartCor() {
+                yield return new WaitForSeconds(_duration/2);
             foreach (var i in images) {
-                yield return new WaitForSeconds(3f);
                 Appear(i, 1);
+                yield return new WaitForSeconds(_duration);
             }
         }
         

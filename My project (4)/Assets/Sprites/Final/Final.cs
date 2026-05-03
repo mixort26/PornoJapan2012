@@ -10,7 +10,7 @@ namespace Sprites.Final
         public AudioClip musicTheme;
         public Image[] images;
         public Image blackscreen;
-        private float _duration = 5f;
+        private float _duration = 6f;
 
         private void Start() {
             MusicManager.Instance.PlayMusic(musicTheme);
@@ -19,17 +19,16 @@ namespace Sprites.Final
         }
 
         private IEnumerator End() {
-            yield return new WaitForSeconds(_duration * images.Length + 20f);
+            yield return new WaitForSeconds(_duration * images.Length + 15f);
             SceneManager.LoadScene("SceneMenu");
             SceneManager.UnloadSceneAsync("Final");
         }
         
         private IEnumerator StartCor() {
             StartCoroutine(FadeRoutineReverse(blackscreen, 5f));
-            yield return new WaitForSeconds(5f);
             foreach (var i in images) {
                 yield return new WaitForSeconds(_duration);
-                Appear(i, 1);
+                Appear(i, 1.5f);
             }
         }
         

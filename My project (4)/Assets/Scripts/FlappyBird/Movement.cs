@@ -72,7 +72,7 @@ public class Movement : MonoBehaviour
         timeText.text = (GameData.Minutes >= 600 ? "" + GameData.Minutes / 60 : "0" + GameData.Minutes / 60) + ':' +
                         (GameData.Minutes % 60 >= 10 ? GameData.Minutes % 60 : "0" + GameData.Minutes % 60);
         
-        if (GameData.Minutes == 474 && !_isTransitioning) {
+        if (GameData.Minutes == 475 && !_isTransitioning) {
             _isTransitioning = true;
             GameData.Score = score;
             SceneManager.LoadScene("ToDay");

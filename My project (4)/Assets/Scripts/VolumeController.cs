@@ -7,15 +7,24 @@ public class VolumeControl : MonoBehaviour
     public AudioMixer mixer;
     public string parameterName = "MyExposedVolume";
 
-    private Slider slider;
+    public Slider slider;
 
     void Start()
     {
-        slider.minValue = -80f;
-        slider.maxValue = 0f;
-
-        slider.onValueChanged.AddListener(SetVolume);
+        slider = GetComponent<Slider>();
+    
+        if (slider != null) 
+        {
+            slider.minValue = -80f;
+            slider.maxValue = 0f;
+            slider.onValueChanged.AddListener(SetVolume);
+        
+            float currentVol;
+            mixer.GetFloat(parameterName, out currentVol);
+            slider.value = currentVol;
+        }
     }
+
 
     public void SetVolume(float value)
     {
